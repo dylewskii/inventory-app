@@ -5,17 +5,19 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
-// database
+// Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL);
-const db = mongoose.connection;
 
+const db = mongoose.connection;
 db.on("error", (error) => console.log(error));
 db.once("open", () => console.log("connected to db"));
 
 // routers
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+const moviesRouter = require("./routes/movies");
+const genresRouter = require("./routes/genres");
+const favoritesRouter = require("./routes/favorites");
 
 // app
 const app = express();
@@ -31,7 +33,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/movies", moviesRouter);
+app.use("/genres", genresRouter);
+app.use("/favorites", favoritesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
