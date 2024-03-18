@@ -17,7 +17,7 @@ db.once("open", () => console.log("connected to db"));
 const indexRouter = require("./routes/index");
 const moviesRouter = require("./routes/movies");
 const genresRouter = require("./routes/genres");
-const favoritesRouter = require("./routes/favorites");
+const topRatedRouter = require("./routes/topRated");
 
 // app
 const app = express();
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/movies", moviesRouter);
 app.use("/genres", genresRouter);
-app.use("/favorites", favoritesRouter);
+app.use("/top", topRatedRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
