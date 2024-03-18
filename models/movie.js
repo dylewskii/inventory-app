@@ -30,6 +30,10 @@ const movieSchema = new mongoose.Schema({
   },
 });
 
+movieSchema.virtual("url").get(function () {
+  return `/movie/${this._id}`;
+});
+
 const Movie = mongoose.model("Movie", movieSchema);
 
 module.exports = Movie;

@@ -14,6 +14,10 @@ const topRatedMovieSchema = new mongoose.Schema({
   },
 });
 
+topRatedMovieSchema.virtual("url").get(function () {
+  return `/top/${this._id}`;
+});
+
 const TopRatedMovie = mongoose.model("TopRatedMovie", topRatedMovieSchema);
 
 module.exports = TopRatedMovie;
