@@ -5,15 +5,14 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <aside class="sidebar">
-      <nav class="sidebar-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/movies">All Movies</a></li>
-        <li><a href="/top">Top Rated</a></li>
-        <li><a href="/genres">Genres</a></li>
+    <header class="header">
+      <h1><a class="title__link" href="/"><%= title %></a></h1>
+      <nav class="header-nav">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/movies">All Movies</a></li>
+        <li><a class="nav__link" href="/top">Top Rated</a></li>
+        <li><a class="nav__link" href="/genres">Genres</a></li>
       </nav>
-    </aside>
+    </header>
   </body>
 </html>

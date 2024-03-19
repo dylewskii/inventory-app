@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1><a class="title__link" href="/"><%= title %></a></h1>
+      <nav class="header-nav">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/movies">All Movies</a></li>
+        <li><a class="nav__link" href="/top">Top Rated</a></li>
+        <li><a class="nav__link" href="/genres">Genres</a></li>
+      </nav>
+    </header>
+    <main class="top-rated">
+      <h2 class="top-rated__title">Top Rated Movies</h2>
+      <div class="top-rated__content">
+        <% movies.forEach(function(movie) { %>
+        <div class="movie">
+          <h3><%= movie.title %></h3>
+          <p><strong>Rating:</strong> <%= movie.imdb.rating %></p>
+          <p><strong>Genre:</strong> <%= movie.genres %></p>
+          <p><strong>Director:</strong> <%= movie.directors[0] %></p>
+          <p>
+            <strong>Release Date:</strong> <%= movie.release_date.toDateString()
+            %>
+          </p>
+          <img src="`${movie.poster}`" />
+        </div>
+        <% }); %>
+      </div>
+    </main>
+  </body>
+</html>
