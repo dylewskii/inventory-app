@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
+const movieController = require("../controllers/movieController");
+
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "ClipFlix" });
-});
+router.get("/", movieController.index);
 
 module.exports = router;
