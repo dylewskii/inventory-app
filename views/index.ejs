@@ -14,5 +14,17 @@
         <li><a class="nav__link" href="/genres">Genres</a></li>
       </nav>
     </header>
+    <main class="home">
+      <ul>
+        <li><strong>All Movies: </strong><%= movie_count %></li>
+        <li><strong>Physical Copies: </strong><%= movie_instance_count %></li>
+        <li>
+          <strong>Physical Copies: </strong><%= movie_instance_available_count
+          %>
+        </li>
+        <li><strong>Top Rated: </strong><%= top_rated_count %></li>
+        <li><strong>Genres: </strong><%= genre_count %></li>
+      </ul>
+    </main>
   </body>
 </html>
