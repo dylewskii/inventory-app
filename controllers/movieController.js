@@ -1,5 +1,35 @@
 const Movie = require("../models/movie");
+const MovieInstance = require("../models/movieInstance");
+const Genre = require("../models/genre");
+const TopRated = require("../models/topRatedMovie");
+
 const asyncHandler = require("express-async-handler");
+
+exports.index = asyncHandler(async (req, res, next) => {
+  // Get details of movie, movie instances, top rated and genre counts (in parallel)
+  const [
+    numMovies,
+    numMovieInstances,
+    numAvailableMovieInstances,
+    numTopRated,
+    numGenres,
+  ] = await Promise.all([
+    Movie.countDocuments({}).exec(),
+    MovieInstance.countDocuments({}).exec(),
+    MovieInstance.countDocuments({ status: "Available" }).exec(),
+    TopRated.countDocuments({}).exec(),
+    Genre.countDocuments({}).exec(),
+  ]);
+
+  res.render("index", {
+    title: "ClipFlix",
+    movie_count: numMovies,
+    movie_instance_count: numMovieInstances,
+    movie_instance_available_count: numAvailableMovieInstances,
+    top_rated_count: numTopRated,
+    genre_count: numGenres,
+  });
+});
 
 // Display list of all movies.
 exports.movie_list = asyncHandler(async (req, res, next) => {
